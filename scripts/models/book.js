@@ -1,72 +1,35 @@
 'use strict';
-var app = app || {};
 
-(function(module) {
-  function Book(rawDataObj) {
-    Object.keys(rawDataObj).forEach(key => this[key] = rawDataObj[key]);
+var app = {};
+// var __API_URL__ = 'http://localhost:3000';
+var __API_URL__ = 'https://ag-vs-booklist.herokuapp.com';
+
+(function (module) {
+  function errorCallback(err) {
+    console.error(err);
+    module.errorView.initErrorPage(err);
   }
 
-  Books.all = [];
+  function Book(bookObject) {
+    Object.keys(bookObject).forEach(key => this[key] = bookObject[key]);
+  }
 
-  Book.prototype.toHtml = function() {
-    var template = Handlebars.compile($('#book-template').text());
+  Task.prototype.toHtml = function () {
+    let template = Handlebars.compile($('#book-template').text());
     return template(this);
-  };
+  }
 
-  Book.loadAll = bookData => Book.all = bookData.map(ele => new Book(ele));
+  Book.all = [];
 
-  Book.fetchAll = callback => {
-    $.get('/books')
-      .then(
-        results => {
-          Book.loadAll(results);
-          callback();
-        })
-  };
+  Book.loadAll = rows => {
+    Book.all = rows.sort((a, b) => b.title - a.title).map(book => new Book(book));
+  }
 
-  Book.allAuthors = () => {
-    return Book.all.map(book => book.author)
-      .reduce((names, name) => {
-        if (names.indexOf(name) === -1) names.push(name);
-        return names;
-      }, []);
-  };
-
-  Book.truncateTable = callback => {
-    $.ajax({
-      url: '/books',
-      method: 'DELETE',
-    })
-      .then(callback);
-  };
-
-  Book.prototype.insertRecord = function(callback) {
-    $.post('/books', {title: this.title, author: this.author, isbn: this.isbn, image_url: this.image_url, description: this.describtion })
-      .then(callback);
-  };
-
-  Book.prototype.deleteRecord = function(callback) {
-    $.ajax({
-      url: `/books/${this.book_id}`,
-      method: 'DELETE'
-    })
-      .then(callback);
-  };
-
-  Book.prototype.updateRecord = function(callback) {
-    $.ajax({
-      url: `/books/${this.book_id}`,
-      method: 'PUT',
-      data: {
-        title: this.title, 
-        author: this.author, 
-        isbn: this.isbn, 
-        image_url: this.image_url, 
-        description: this.describtion
-      }
-    })
-      .then(callback);
-  };
+  Book.fetchAll = callback =>
+    $.get(`${__API_URL__}/tasks`)
+      .then(Book.loadAll)
+      .then(callback)
+      .catch(errorCallback);
 
   module.Book = Book;
-})(app);
+})(app)

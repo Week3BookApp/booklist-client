@@ -1,10 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Lab 4</title>
-    </head>
-    <body>
-        <p>Hello world</p>H
-    </body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Book App</title>
+    <link rel="stylesheet" href="/styles/normalize.css">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/modules.css">
+    <script id="book-template" type="text/x-handlebars-template">
+      <li><strong>{{name}}</strong>: {{numWords}} words written</li>
+    </script>
+  </head>
+  <body>
+    <header class="site-header clearfix">
+      <section>
+        <h1 class="heading-group-h1 pull-left">Lab 11 - homepage</h1>
+        <h2 class="heading-group-h1 pull-right">GET: /api/v1/books</h2>
+        <div class="Logo"><img src="" alt="">Books app</div>
+      </section>
+    </header>
+    <main class="my-books">
+      <h1>My Books</h1>
+      <section class="book-templates">
+      </section>
+    </main>
+    <footer>
+      <div id="footer"><img src="" alt="" class="pull-right">
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+    <script src="scripts/article.js"></script>
+    <script src="scripts/articleView.js"></script>
+    <script>
+     app.book.fetchAll();
+    </script>
+  </body>
 </html>

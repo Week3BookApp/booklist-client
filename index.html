@@ -4,25 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Book App</title>
+    <link rel="stylesheet" href="/styles/reset.css">
     <link rel="stylesheet" href="/styles/normalize.css">
     <link rel="stylesheet" href="styles/base.css">
     <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="styles/modules.css">
     <script id="book-template" type="text/x-handlebars-template">
-      <li><strong>{{name}}</strong>: {{numWords}} words written</li>
+      <li class="book-list"><img src={{book-image}} alt=""><strong>{{book-title}}</strong>{{book-author}}</li>
     </script>
   </head>
   <body>
-    <header class="site-header clearfix">
+    <header class="site-header">
       <section>
-        <div class="pull-left" id="logo"><img src="" alt="Books app logo"></div>
-        <h1>Book App</h1>
+        <div class="pull-left" id="logo"><img src="" alt="Books-app-logo"></div>
+        <h1>Books App</h1>
       </section>
     </header>
-    <main class="my-books">
-        <h1>My Books</h1>
-      <section class="book-templates">
-      </section>
+    <main>
+        <section class="error-view container">
+          <h3>I'm Broken, HELP!</h3>
+          <section id="error-message"></section>
+        </section>
+        <section class="book-view container">
+          <h3>My Books</h3>
+          <ul class="book-list"></ul>
+        </section>
     </main>
     <footer>
       <div id="footer"><img src="" alt="" class="pull-right">
@@ -30,10 +36,8 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+    <script src="scripts/book.js"></script>
     <script src="scripts/book-view.js"></script>
     <script src="scripts/error-view.js"></script>
-    <script>
-     app.book.fetchAll();
-    </script>
   </body>
 </html>

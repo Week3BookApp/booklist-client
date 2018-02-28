@@ -1,3 +1,24 @@
-header img {
-  float: left;
+#logo {
+  height: 20%;
+  vertical-align: middle;
+}
+.site-header section {
+  vertical-align: middle;
+  height: 100px;
+}
+
+.bookView {
+  padding: 10px;
+}
+
+.bookContainer {
+  width: 100%;
+  height: 200px;
+  background-color: rgba(151, 150, 150, 0.849);
+  display: block;
+}
+
+.bookBanner {
+  height: 50px;
+  background-color: rgb(71, 71, 71);
 }

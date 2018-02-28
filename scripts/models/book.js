@@ -1,72 +1,30 @@
 'use strict';
 var app = app || {};
+const __API_URL__ = 'http://localhost:3000';
 
 (function(module) {
-  function Book(rawDataObj) {
-    Object.keys(rawDataObj).forEach(key => this[key] = rawDataObj[key]);
+  function errorCallback(error) {
+    console.error(error);
+    module.errorView.initErrorPage(error);
   }
 
-  Books.all = [];
+  function Book(rawBookObj) {
+    Object.keys(rawBookObj).forEach(key => this[key] = rawBookObj[key]);
+  }
 
   Book.prototype.toHtml = function() {
-    var template = Handlebars.compile($('#book-template').text());
+    let template = Handlebars.compile($('bookTemplate').text());
     return template(this);
   };
 
-  Book.loadAll = bookData => Book.all = bookData.map(ele => new Book(ele));
+  Book.all = [];
+  Book.loadAll = rows => Book.all = rows.sort((a, b) => b.title - a.title).map(book => new Book(book));
 
-  Book.fetchAll = callback => {
-    $.get('/books')
-      .then(
-        results => {
-          Book.loadAll(results);
-          callback();
-        })
-  };
-
-  Book.allAuthors = () => {
-    return Book.all.map(book => book.author)
-      .reduce((names, name) => {
-        if (names.indexOf(name) === -1) names.push(name);
-        return names;
-      }, []);
-  };
-
-  Book.truncateTable = callback => {
-    $.ajax({
-      url: '/books',
-      method: 'DELETE',
-    })
-      .then(callback);
-  };
-
-  Book.prototype.insertRecord = function(callback) {
-    $.post('/books', {title: this.title, author: this.author, isbn: this.isbn, image_url: this.image_url, description: this.describtion })
-      .then(callback);
-  };
-
-  Book.prototype.deleteRecord = function(callback) {
-    $.ajax({
-      url: `/books/${this.book_id}`,
-      method: 'DELETE'
-    })
-      .then(callback);
-  };
-
-  Book.prototype.updateRecord = function(callback) {
-    $.ajax({
-      url: `/books/${this.book_id}`,
-      method: 'PUT',
-      data: {
-        title: this.title, 
-        author: this.author, 
-        isbn: this.isbn, 
-        image_url: this.image_url, 
-        description: this.describtion
-      }
-    })
-      .then(callback);
-  };
+  Book.fetchAll = callback =>
+    $.get(`${__API_URL__}/api/v1/books`) //endpoint for out query links to app.get in server.js
+      .then(Book.loadAll) // once we have the data from the server query run loadAll with the response as the argument passed in
+      .then(callback) // If we called fetchAll with a callback run that callback
+      .catch(errorCallback); // if error pass invoke errorCallback with the error as the argument
 
   module.Book = Book;
 })(app);

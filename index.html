@@ -3,37 +3,64 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Book App</title>
-    <link rel="stylesheet" href="/styles/normalize.css">
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/icons.css">
     <link rel="stylesheet" href="styles/base.css">
     <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="styles/modules.css">
-    <script id="book-template" type="text/x-handlebars-template">
-      <li><strong>{{name}}</strong>: {{numWords}} words written</li>
+
+    <!-- tempalte for the book list -->
+    <script id="bookTemplate" type="text/x-handlebars-template">
+      <li class="bookIndexLi" data-bookId={{book_id}}>
+        <section class="bookContainer">
+          <img src="{{img_url}}">
+          <div class="bookBanner">
+            <h3>{{title}}</h3>
+            <p>{{author}}</p>
+          </div>
+        </section>
+      </li>
+    </script>
+    <!-- tempalte for the error route -->
+    <script id="errTemplate" type="text/x-handlebars-template">
+    <h1>Looks like you missed your route!</h1>
+    <p>{{status}}: {{statusText}}</p>
     </script>
   </head>
   <body>
-    <header class="site-header clearfix">
+    <header class="site-header">
       <section>
-        <div class="pull-left" id="logo"><img src="" alt="Books app logo"></div>
+        <div id="logo"><img src="" alt="Books app logo"></div>
         <h1>Book App</h1>
       </section>
     </header>
-    <main class="my-books">
+    <main class="bookIndexMain">
+      <section class="errorView container">
+        <h2>Well that didn't work</h2>
+        <div id="errorMessage"></div>
+      </section>
+      <section class="bookView container">
         <h1>My Books</h1>
-      <section class="book-templates">
+        <section id="bookIndexSection"></section>
+        <ul id="bookListUl"></ul>
       </section>
     </main>
     <footer>
-      <div id="footer"><img src="" alt="" class="pull-right">
+      <section class="socialBar">
+        <ul>
+          <!-- fill with icoMoon? -->
+        </ul>
+      </section>
     </footer>
-
+    <!-- CDN resources -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+
+    <!-- App resources -->
+    <script src="scripts/models/book.js"></script>
     <script src="scripts/book-view.js"></script>
     <script src="scripts/error-view.js"></script>
-    <script>
-     app.book.fetchAll();
-    </script>
   </body>
 </html>

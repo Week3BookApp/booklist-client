@@ -14,19 +14,32 @@
     <!-- tempalte for the book list -->
     <script id="bookTemplate" type="text/x-handlebars-template">
       <li class="bookIndexLi" data-bookId={{book_id}}>
-        <section class="bookContainer">
+        <section>
           <img src="{{image_url}}">
           <div class="bookBanner">
             <h3>{{title}}</h3>
             <p>{{author}}</p>
+            <button href="/detailView/{{id}}">View Details</button>
           </div>
         </section>
       </li>
     </script>
     <!-- tempalte for the error route -->
     <script id="errTemplate" type="text/x-handlebars-template">
-    <h1>Looks like you missed your route!</h1>
-    <p>{{status}}: {{statusText}}</p>
+      <section>
+        <h1>Looks like you missed your route!</h1>
+        <p>{{status}}: {{statusText}}</p>
+      </section>
+    </script>
+    <!-- template for book detail -->
+    <script id="detailTemplate" type="text/x-handlebars-template">
+      <section>
+        <h1>{{title}}</h1>
+        <p>{{author}}</p>
+        <p>{{isbn}}</p>
+        <img src={{image_url}}>
+        <p>{{description}}</p>
+      </section>
     </script>
   </head>
   <body>
@@ -36,15 +49,28 @@
         <h1>Book App</h1>
       </section>
     </header>
-    <main class="bookIndexMain">
-      <section class="errorView container">
-        <h2>Well that didn't work</h2>
-        <div id="errorMessage"></div>
-      </section>
+    <main class="bookMain">
+      <!-- errorView -->
+      <section class="errorView container"></section>
+      <!-- indexVIew -->
       <section class="bookView container">
         <h1><u>My Books</u></h1>
         <section id="bookIndexSection"></section>
         <ul id="bookListUl"></ul>
+      </section>
+      <!-- detailView -->
+      <section class="detailView container"></section>
+      <!-- formView -->
+      <section class="formView container">
+        <form class="newBookForm">
+          <label>Add a new Book</label>
+          <input type="text" placeholder="Title">
+          <input type="text" placeholder="Author">
+          <input type="text" placeholder="ISBN">
+          <input type="text" placeholder="Image URL">
+          <textarea name="description" placeholder="Description"></textarea>
+          <submit>Submit</submit>
+        </form>
       </section>
     </main>
     <footer>

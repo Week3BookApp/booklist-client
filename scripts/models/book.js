@@ -26,5 +26,11 @@ const __API_URL__ = 'http://localhost:3000';
       .then(callback) // If we called fetchAll with a callback run that callback
       .catch(errorCallback); // if error pass invoke errorCallback with the error as the argument
 
+  Book.fetchOne = (ctx, callback) =>
+    $.get(`${__API_URL__}/api/v1/books/${ctx.params.id}`)
+      .then(results => ctx.book = results[0])
+      .then(callback)
+      .catch(errorCallback);
+
   module.Book = Book;
 })(app);

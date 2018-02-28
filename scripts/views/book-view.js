@@ -1,28 +1,19 @@
 'use strict';
 var app = app || {};
+const __API_URL__ = 'http://localhost:3000';
+
 (module => {
-  var bookview = {};
+  const bookView = {};
 
-  bookView.create = () => {
-    var book;
-    $('.my-books').empty();
-
-    book = new Book({
-      title: $('#book-title').val(),
-      author: $('#book-author').val(),
-      isbn: $('#book-isbn').val(),
-      image_url: $('#book-image').val(),
-      description: $('#book-desription').val(),
-    });
-
-    $('.my-books').append(Book.toHtml());
-    // $('pre code').each((i, block) => hljs.highlightBlock(block));
+  bookView.initIndexPage = function() {
+    $('container').hide(); // hide anything with the container tag. Allows for easy view swapping
+    $('bookView').show(); //show the book section
+    module.Book.all.map(book => $('#bookListUl').append(book.toHtml())); //for each book in the Book.all array make a new template li
   };
 
-  bookView.initIndexPage = () => {
-    app.Books.all.forEach(a => $('.).append(a.toHtml());
-    // $('pre code').each((i, block) => hljs.highlightBlock(block));
-  };
-
-  module.articleView = articleView;
+  module.bookView = bookView;
 })(app);
+
+$(function() { //document.ready function. Runs on page load.
+  app.Book.fetchAll(app.bookView.initIndexPage);
+});

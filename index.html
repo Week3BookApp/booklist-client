@@ -15,7 +15,7 @@
     <script id="bookTemplate" type="text/x-handlebars-template">
       <li class="bookIndexLi" data-bookId={{book_id}}>
         <section class="bookContainer">
-          <img src="{{img_url}}">
+          <img src="{{image_url}}">
           <div class="bookBanner">
             <h3>{{title}}</h3>
             <p>{{author}}</p>
@@ -32,7 +32,7 @@
   <body>
     <header class="site-header">
       <section>
-        <div id="logo"><img src="" alt="Books app logo"></div>
+        <div id="logo"><img src="img/033-books.png" alt="Books app logo" class="float-left"></div>
         <h1>Book App</h1>
       </section>
     </header>
@@ -42,15 +42,17 @@
         <div id="errorMessage"></div>
       </section>
       <section class="bookView container">
-        <h1>My Books</h1>
+        <h1><u>My Books</u></h1>
         <section id="bookIndexSection"></section>
         <ul id="bookListUl"></ul>
       </section>
     </main>
     <footer>
-      <section class="socialBar">
+      <section class="socialBar float-right">
         <ul>
-          <!-- fill with icoMoon? -->
+          <li><img src="img/392-amazon.png" alt=""></li>
+          <li><img src="img/433-github.png" alt=""></li>
+          <li><img src="img/458-linkedin.png" alt=""></li>
         </ul>
       </section>
     </footer>

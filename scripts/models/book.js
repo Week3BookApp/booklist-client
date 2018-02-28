@@ -13,7 +13,7 @@ const __API_URL__ = 'http://localhost:3000';
   }
 
   Book.prototype.toHtml = function() {
-    let template = Handlebars.compile($('bookTemplate').text());
+    let template = Handlebars.compile($('#bookTemplate').text());
     return template(this);
   };
 

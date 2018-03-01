@@ -11,6 +11,12 @@ var app = app || {};
     module.Book.all.map(book => $('#bookListUl').append(book.toHtml())); //for each book in the Book.all array make a new template li
   };
 
+  module.Book.newBook = function(callback) {
+    // REVIEW: Why can't we use an arrow function here for .insertRecord()?
+    $.post('/api/v1/books', {book_id, author, title, isbn, image_url, description})
+      .then(console.log)
+      .then(callback);
+
   module.bookView = bookView;
 })(app);
 

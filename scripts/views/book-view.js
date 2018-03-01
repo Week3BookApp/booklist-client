@@ -30,27 +30,22 @@ var app = app || {};
         description: event.target.description.value,
       };
     });
-
-    bookView.initUpdateView = function() { //added in lab 13 for update
-      $('.container').hide();
-      $('.formView').show();
-      $('.newBookForm').on('submit', function(event) {
-        event.preventDefault();
-        let newBook = {
-          title: event.target.title.value,
-          author: event.target.author.value,
-          isbn: event.target.isbn.value,
-          image_url: event.target.image_url.value,
-          description: event.target.description.value,
-        };
-      });
-    
-    module.Book.newBook(newBook);
   };
 
+  bookView.initUpdateView = function() { //added in lab 13 for update
+    $('.container').hide();
+    $('.formView').show();
+    $('.newBookForm').on('submit', function(event) {
+      event.preventDefault();
+      let newBook = {
+        title: event.target.title.value,
+        author: event.target.author.value,
+        isbn: event.target.isbn.value,
+        image_url: event.target.image_url.value,
+        description: event.target.description.value,
+      };
+    });
+  };
+    
   module.bookView = bookView;
 })(app);
-
-$(function() { //document.ready function. Runs on page load.
-  app.Book.fetchAll(app.bookView.initIndexPage);
-});

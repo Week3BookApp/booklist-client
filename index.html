@@ -13,15 +13,15 @@
 
     <!-- tempalte for the book list -->
     <script id="bookTemplate" type="text/x-handlebars-template">
-      <li class="bookIndexLi" data-bookId={{id}}>
+      <li class="bookIndexLi" data-bookId={{book_id}}>
         <section>
           <img src="{{image_url}}">
           <div class="bookBanner">
             <h3>{{title}}</h3>
             <p>{{author}}</p>
-            <button href="/detailView/{{id}}">View Details</button>
-            <button href="/detailView/{{id}}">Update Book</button> <!-- added in lab 13 -->
-            <button href="/detailView/{{id}}">Delete Book</button> <!-- added in lab 13 -->
+            <button href="/detailView/{{book_id}}">View Details</button>
+            <button href="/detailView/{{book_id}}">Update Book</button> <!-- added in lab 13 -->
+            <button href="/detailView/{{book_id}}">Delete Book</button> <!-- added in lab 13 -->
           </div>
         </section>
       </li>
@@ -96,10 +96,12 @@
     <!-- CDN resources -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+    <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
 
     <!-- App resources -->
     <script src="scripts/models/book.js"></script>
     <script src="scripts/views/book-view.js"></script>
+    <script src="scripts/Controllers/routes.js"></script>
     <script src="scripts/views/error-view.js"></script>
   </body>
 </html>

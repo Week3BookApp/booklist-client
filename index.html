@@ -20,6 +20,8 @@
             <h3>{{title}}</h3>
             <p>{{author}}</p>
             <button href="/detailView/{{id}}">View Details</button>
+            <button href="/detailView/{{id}}">Update Book</button> <!-- added in lab 13 -->
+            <button href="/detailView/{{id}}">Delete Book</button> <!-- added in lab 13 -->
           </div>
         </section>
       </li>
@@ -48,6 +50,15 @@
         <div id="logo"><img src="img/033-books.png" alt="Books app logo" class="float-left"></div>
         <h1>Book App</h1>
       </section>
+      <nav id="navMenu">
+        <div id="burgerMenu"></div>
+        <div id="dropdownContainer">
+          <ul id="navUl">
+            <li><a href="/"></a> My Books</li>
+            <li><a href="/formView"></a> New Book</li>
+          </ul>
+        </div>
+      </nav>
     </header>
     <main class="bookMain">
       <!-- errorView -->
@@ -63,12 +74,12 @@
       <!-- formView -->
       <section class="formView container">
         <form class="newBookForm">
-          <label>Add a new Book</label>
-          <input type="text" placeholder="Title">
-          <input type="text" placeholder="Author">
-          <input type="text" placeholder="ISBN">
-          <input type="text" placeholder="Image URL">
-          <textarea name="description" placeholder="Description"></textarea>
+          <label id="formLabel">Add a new Book</label>
+          <input id="formTitleInput" name="title" type="text" placeholder="Title">
+          <input id="formAuthorInput" name="author" type="text" placeholder="Author">
+          <input id="formIsbnInput" name="isbn" type="text" placeholder="ISBN">
+          <input id="formImgInput" name="image_url" type="text" placeholder="Image URL">
+          <textarea id="forDescriptionInput" name="description" placeholder="Description"></textarea>
           <submit>Submit</submit>
         </form>
       </section>

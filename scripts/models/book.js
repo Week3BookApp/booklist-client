@@ -37,5 +37,16 @@ const __API_URL__ = 'http://localhost:3000';
       .then(() => page('/'))
       .catch(errorCallback);
 
+  Book.update = book => // added in lab 13 to update
+    $.ajax(`${__API_URL__}/api/v1/books/`, book)
+      .then(() => page('/'))
+      .catch(errorCallback);
+
+  Book.destroy = (ctx,callback) => // added in lab 13 to delete
+    $.ajax(`${__API_URL__}/api/v1/books/${ctx.params.id}`)
+      .then(console.log)
+      .then(callback)
+      .catch(errorCallback);
+
   module.Book = Book;
 })(app);

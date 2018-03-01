@@ -19,9 +19,9 @@
           <div class="bookBanner">
             <h3>{{title}}</h3>
             <p>{{author}}</p>
-            <button href="/detailView/{{id}}">View Details</button>
-            <button href="/detailView/{{id}}">Update Book</button> <!-- added in lab 13 -->
-            <button href="/detailView/{{id}}">Delete Book</button> <!-- added in lab 13 -->
+            <button> <a href="/detailView/{{id}}"> View Details </a></button>
+            <button> <a href="/updateView/{{id}}">Update Book </a></button>
+            <button> <a href="/delete/{{id}}">Delete Book</a></button>
           </div>
         </section>
       </li>
@@ -43,6 +43,20 @@
         <p>{{description}}</p>
       </section>
     </script>
+    <!-- template for book update -->
+    <script id="updateTemplate" type="text/x-handlebars-template">
+      <section class="updateView container">
+        <form class="updateBookForm">
+          <label>Update a Book</label>
+          <input id="updateTitle" name="title" type="text" value="{{title}}">
+          <input id="updateAuthor" name="author" type="text" value="{{author}}">
+          <input id="updateIsbn" name="isbn" type="text" value="{{isbn}}">
+          <input id="UpdateImg" name="image_url" type="text" value="{{image_url}}">
+          <textarea id="updateDescription" name="description" value="{{description}}" ></textarea>
+          <button>Submit</button>
+        </form>
+      </section>
+    </script>
   </head>
   <body>
     <header class="site-header">
@@ -50,12 +64,12 @@
         <div id="logo"><img src="img/033-books.png" alt="Books app logo" class="float-left"></div>
         <h1>Book App</h1>
       </section>
-      <nav id="navMenu">
+      <nav id="navMenu"> <!-- added in lab 13 -->
         <div id="burgerMenu"></div>
         <div id="dropdownContainer">
           <ul id="navUl">
-            <li><a href="/"></a> My Books</li>
-            <li><a href="/formView"></a> New Book</li>
+            <li><a href="/">My Books</a></li>
+            <li><a href="/formView">New Book</a></li>
           </ul>
         </div>
       </nav>
@@ -75,14 +89,16 @@
       <section class="formView container">
         <form class="newBookForm">
           <label id="formLabel">Add a new Book</label>
-          <input id="formTitleInput" name="title" type="text" placeholder="Title">
-          <input id="formAuthorInput" name="author" type="text" placeholder="Author">
-          <input id="formIsbnInput" name="isbn" type="text" placeholder="ISBN">
-          <input id="formImgInput" name="image_url" type="text" placeholder="Image URL">
-          <textarea id="forDescriptionInput" name="description" placeholder="Description"></textarea>
-          <submit>Submit</submit>
+          <input name="title" type="text" placeholder="Title">
+          <input name="author" type="text" placeholder="Author">
+          <input name="isbn" type="text" placeholder="isbn">
+          <input name="image_url" type="text" placeholder="Image URL">
+          <textarea name="description" placeholder="Description"></textarea>
+          <button>Submit</button>
         </form>
       </section>
+      <!-- updateView -->
+      <section class="updateView container"></section>
     </main>
     <footer>
       <section class="socialBar float-right">
@@ -96,10 +112,12 @@
     <!-- CDN resources -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+    <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
 
     <!-- App resources -->
     <script src="scripts/models/book.js"></script>
     <script src="scripts/views/book-view.js"></script>
     <script src="scripts/views/error-view.js"></script>
+    <script src="scripts/views/routes.js"></script>
   </body>
 </html>

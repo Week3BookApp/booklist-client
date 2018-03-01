@@ -38,7 +38,11 @@ const __API_URL__ = 'http://localhost:3000';
       .catch(errorCallback);
 
   Book.update = book => // added in lab 13 to update
-    $.ajax(`${__API_URL__}/api/v1/books/`, book)
+    $.ajax( {
+      url: `${__API_URL__}/api/v1/books/${book.book_id}`,
+      method: 'PUT',
+      data: book,
+    })
       .then(() => page('/'))
       .catch(errorCallback);
 

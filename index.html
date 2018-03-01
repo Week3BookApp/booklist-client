@@ -19,9 +19,9 @@
           <div class="bookBanner">
             <h3>{{title}}</h3>
             <p>{{author}}</p>
-            <button href="/detailView/{{book_id}}">View Details</button>
-            <button href="/detailView/{{book_id}}">Update Book</button> <!-- added in lab 13 -->
-            <button href="/detailView/{{book_id}}">Delete Book</button> <!-- added in lab 13 -->
+            <button><a href="/detailView/{{book_id}}">View Details</a></button>
+            <button><a href="/updateView/{{book_id}}">Update Book</a></button> <!-- added in lab 13 -->
+            <button><a href="/deleteView/{{book_id}}">Delete Book</a></button> <!-- added in lab 13 -->
           </div>
         </section>
       </li>
@@ -54,8 +54,8 @@
         <div id="burgerMenu"></div>
         <div id="dropdownContainer">
           <ul id="navUl">
-            <li><a href="/"></a> My Books</li>
-            <li><a href="/formView"></a> New Book</li>
+            <li><a href="/">My Books</a> </li>
+            <li><a href="/formView">New Book</a> </li>
           </ul>
         </div>
       </nav>
@@ -80,7 +80,7 @@
           <input id="formIsbnInput" name="isbn" type="text" placeholder="ISBN">
           <input id="formImgInput" name="image_url" type="text" placeholder="Image URL">
           <textarea id="forDescriptionInput" name="description" placeholder="Description"></textarea>
-          <submit>Submit</submit>
+          <button>Submit</button>
         </form>
       </section>
     </main>

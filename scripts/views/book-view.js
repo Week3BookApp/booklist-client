@@ -17,10 +17,14 @@ var app = app || {};
     $('detailView').append(template(ctx.book));
   };
 
-  bookView.initformView = function(ctx) {
+  bookView.initFormView = function() {
     $('.container').hide();
-    $('.singleBookView').show();
-    //needs to work with pagejs
+    $('.formView').show();
+    let newBook = {
+      
+    };
+
+    module.Book.newBook(newBook)
   };
 
   module.bookView = bookView;

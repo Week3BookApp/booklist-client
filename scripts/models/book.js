@@ -34,6 +34,7 @@ const __API_URL__ = 'http://localhost:3000';
       
   Book.newBook = book =>
     $.post(`${__API_URL__}/api/v1/books/`, book)
+      .then(console.log('passed through post'))
       .then(() => page('/'))
       .catch(errorCallback);
 

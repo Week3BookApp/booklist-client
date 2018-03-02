@@ -5,8 +5,9 @@ var app = app || {};
   const bookView = {};
 
   bookView.reset = () => {
-    // $('.container').empty(); // Clear the contents of the container
+    $('.container').empty(); // Clear the contents of the container
     $('.container').hide(); // hide anything with the container tag. Allows for easy view swapping
+    $('.containerHeader').hide();
   };
   bookView.initIndexPage = function() {
     bookView.reset();
@@ -24,6 +25,7 @@ var app = app || {};
   bookView.initFormView = function() {
     $('.container').hide();
     $('.formView').show();
+    $('.newBookForm').off('submit');
     $('.newBookForm').on('submit', function(event) {
       event.preventDefault();
       let newBook = {
@@ -41,6 +43,7 @@ var app = app || {};
     $('.updateView').show();
     let template = Handlebars.compile($('#updateTemplate').text());
     $('.updateView').append(template(ctx.book));
+    $('.newBookForm').off('submit');
     $('.updateBookForm').on('submit', function(event) {
       event.preventDefault();
       let newBook = {

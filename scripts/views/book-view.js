@@ -10,9 +10,10 @@ var app = app || {};
     module.Book.all.map(book => $('#bookListUl').append(book.toHtml())); //for each book in the Book.all array make a new template li
   };
 
-  bookView.reset = () => {
-    $('.container').hide();
-  };
+  // bookView.reset = () => {
+  //   $('.container').empty();
+  //   $('.containerHeader').hide();
+  // };
 
   bookView.initDetailView = function(ctx) {
     bookView.reset();

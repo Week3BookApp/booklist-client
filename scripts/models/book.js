@@ -33,19 +33,24 @@ const __API_URL__ = 'http://localhost:3000';
       .catch(errorCallback);
       
   Book.newBook = book =>
-  // console.log(book);
     $.post(`${__API_URL__}/api/v1/books/`, book)
-      .then(console.log('DOne'))
       .then(() => page('/'))
       .catch(errorCallback);
 
   Book.update = book => // added in lab 13 to update
-    $.ajax(`${__API_URL__}/api/v1/books/`, book)
+    $.ajax({
+      url: `${__API_URL__}/api/v1/books/`,
+      method: 'PUT',
+      data: book
+    })
       .then(() => page('/'))
       .catch(errorCallback);
 
   Book.destroy = (ctx, callback) => // added in lab 13 to delete
-    $.ajax(`${__API_URL__}/api/v1/books/${ctx.params.id}`)
+    $.ajax({
+      url: `${__API_URL__}/api/v1/books/${ctx.params.id}`,
+      method: 'DELETE'
+    })
       .then(console.log)
       .then(callback)
       .then(() => page('/'))

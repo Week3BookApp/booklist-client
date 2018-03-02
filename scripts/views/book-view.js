@@ -22,6 +22,7 @@ var app = app || {};
   };
 
   bookView.initFormView = function() {
+    console.log(bookView);
     bookView.reset();
     $('.formView').show();
     $('.newBookForm').on('submit', function(event) {

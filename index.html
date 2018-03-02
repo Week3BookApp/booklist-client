@@ -43,6 +43,19 @@
         <p>{{description}}</p>
       </section>
     </script>
+    <script id="updateTemplate" type="text/x-handlebars-template">
+      <section class="updateView container">
+        <form class="updateBookForm">
+          <label>Update a Book</label>
+          <input id="updateTitle" name="title" type="text" value="{{title}}">
+          <input id="updateAuthor" name="author" type="text" value="{{author}}">
+          <input id="updateIsbn" name="isbn" type="text" value="{{isbn}}">
+          <input id="UpdateImg" name="image_url" type="text" value="{{image_url}}">
+          <textarea id="updateDescription" name="description" value="{{description}}" ></textarea>
+          <button>Submit</button>
+        </form>
+      </section>
+    </script>
   </head>
   <body>
     <header class="site-header">
@@ -83,6 +96,7 @@
           <button>Submit</button>
         </form>
       </section>
+      <section class="updateView"></section>
     </main>
     <footer>
       <section class="socialBar float-right">

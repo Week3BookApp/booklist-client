@@ -21,35 +21,40 @@ const __API_URL__ = 'http://localhost:3000';
   Book.loadAll = rows => Book.all = rows.sort((a, b) => b.title - a.title).map(book => new Book(book));
 
   Book.fetchAll = callback =>
-    $.get(`${__API_URL__}/api/v1/books`) //endpoint for out query links to app.get in server.js
-      .then(Book.loadAll) // once we have the data from the server query run loadAll with the response as the argument passed in
-      .then(callback) // If we called fetchAll with a callback run that callback
-      .catch(errorCallback); // if error pass invoke errorCallback with the error as the argument
+    $.get(`${__API_URL__}/api/v1/books`) 
+      .then(Book.loadAll) 
+      .then(callback) 
+      .catch(errorCallback);
 
   Book.fetchOne = (ctx, callback) =>
     $.get(`${__API_URL__}/api/v1/books/${ctx.params.id}`)
       .then(results => ctx.book = results[0])
       .then(callback)
       .catch(errorCallback);
-
+      
   Book.newBook = book =>
-    $.post(`${__API_URL__}/api/v1/books`, book)
+    $.post(`${__API_URL__}/api/v1/books/`, book)
+      .then(console.log('passed through post'))
       .then(() => page('/'))
       .catch(errorCallback);
 
-  Book.update = book => // added in lab 13 to update
-    $.ajax( {
-      url: `${__API_URL__}/api/v1/books/${book.book_id}`,
+  Book.update = book => 
+    $.ajax({
+      url: `${__API_URL__}/api/v1/books/`,
       method: 'PUT',
-      data: book,
+      data: book
     })
       .then(() => page('/'))
       .catch(errorCallback);
 
-  Book.destroy = (ctx,callback) => // added in lab 13 to delete
-    $.ajax(`${__API_URL__}/api/v1/books/${ctx.params.id}`)
+  Book.destroy = (ctx, callback) =>
+    $.ajax({
+      url: `${__API_URL__}/api/v1/books/${ctx.params.id}`,
+      method: 'DELETE'
+    })
       .then(console.log)
       .then(callback)
+      .then(() => page('/'))
       .catch(errorCallback);
 
   module.Book = Book;

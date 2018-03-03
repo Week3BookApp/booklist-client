@@ -13,15 +13,15 @@
 
     <!-- tempalte for the book list -->
     <script id="bookTemplate" type="text/x-handlebars-template">
-      <li class="bookIndexLi" data-bookId={{book_id}}>
+      <li class="bookIndexLi" data-bookId={{id}}>
         <section>
           <img src="{{image_url}}">
           <div class="bookBanner">
             <h3>{{title}}</h3>
             <p>{{author}}</p>
-            <button><a href="/detailView/{{book_id}}">View Details</a></button>
-            <button><a href="/updateView/{{book_id}}">Update Book</a></button> <!-- added in lab 13 -->
-            <button><a href="/deleteView/{{book_id}}">Delete Book</a></button> <!-- added in lab 13 -->
+            <button> <a href="/detailView/{{id}}"> View Details </a></button>
+            <button> <a href="/updateView/{{id}}">Update Book </a></button>
+            <button> <a href="/delete/{{id}}">Delete Book</a></button>
           </div>
         </section>
       </li>
@@ -43,6 +43,7 @@
         <p>{{description}}</p>
       </section>
     </script>
+    <!-- template for book update -->
     <script id="updateTemplate" type="text/x-handlebars-template">
       <section class="updateView container">
         <form class="updateBookForm">
@@ -67,8 +68,8 @@
         <div id="burgerMenu"></div>
         <div id="dropdownContainer">
           <ul id="navUl">
-            <li><a href="/">My Books</a> </li>
-            <li><a href="/formView">New Book</a> </li>
+            <li><a href="/">My Books</a></li>
+            <li><a href="/formView">New Book</a></li>
           </ul>
         </div>
       </nav>
@@ -79,8 +80,7 @@
       <!-- indexVIew -->
       <section class="bookView containerHeader">
         <h1><u>My Books</u></h1>
-        <section id="bookIndexSection container"></section>
-        <ul id="bookListUl" class="container bookview"></ul>
+        <ul class="container bookView" id="bookListUl"></ul>
       </section>
       <!-- detailView -->
       <section class="detailView container"></section>
@@ -88,15 +88,16 @@
       <section class="formView containerHeader">
         <form class="newBookForm">
           <label id="formLabel">Add a new Book</label>
-          <input id="formTitleInput" name="title" type="text" placeholder="Title">
-          <input id="formAuthorInput" name="author" type="text" placeholder="Author">
-          <input id="formIsbnInput" name="isbn" type="text" placeholder="ISBN">
-          <input id="formImgInput" name="image_url" type="text" placeholder="Image URL">
-          <textarea id="forDescriptionInput" name="description" placeholder="Description"></textarea>
+          <input name="title" type="text" placeholder="Title">
+          <input name="author" type="text" placeholder="Author">
+          <input name="isbn" type="text" placeholder="isbn">
+          <input name="image_url" type="text" placeholder="Image URL">
+          <textarea name="description" placeholder="Description"></textarea>
           <button>Submit</button>
         </form>
       </section>
-      <section class="updateView"></section>
+      <!-- updateView -->
+      <section class="updateView container"></section>
     </main>
     <footer>
       <section class="socialBar float-right">
@@ -115,7 +116,7 @@
     <!-- App resources -->
     <script src="scripts/models/book.js"></script>
     <script src="scripts/views/book-view.js"></script>
-    <script src="scripts/Controllers/routes.js"></script>
     <script src="scripts/views/error-view.js"></script>
+    <script src="scripts/views/routes.js"></script>
   </body>
 </html>

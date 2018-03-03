@@ -21,9 +21,9 @@ const __API_URL__ = 'http://localhost:3000';
   Book.loadAll = rows => Book.all = rows.sort((a, b) => b.title - a.title).map(book => new Book(book));
 
   Book.fetchAll = callback =>
-    $.get(`${__API_URL__}/api/v1/books`) 
-      .then(Book.loadAll) 
-      .then(callback) 
+    $.get(`${__API_URL__}/api/v1/books`)
+      .then(Book.loadAll)
+      .then(callback)
       .catch(errorCallback);
 
   Book.fetchOne = (ctx, callback) =>
@@ -31,14 +31,14 @@ const __API_URL__ = 'http://localhost:3000';
       .then(results => ctx.book = results[0])
       .then(callback)
       .catch(errorCallback);
-      
+
   Book.newBook = book =>
     $.post(`${__API_URL__}/api/v1/books/`, book)
       .then(console.log('passed through post'))
       .then(() => page('/'))
       .catch(errorCallback);
 
-  Book.update = book => 
+  Book.update = book =>
     $.ajax({
       url: `${__API_URL__}/api/v1/books/`,
       method: 'PUT',
@@ -47,15 +47,22 @@ const __API_URL__ = 'http://localhost:3000';
       .then(() => page('/'))
       .catch(errorCallback);
 
-  Book.destroy = (ctx, callback) =>
+  Book.delete = (ctx, callback) =>
     $.ajax({
       url: `${__API_URL__}/api/v1/books/${ctx.params.id}`,
       method: 'DELETE'
     })
-      .then(console.log)
       .then(callback)
       .then(() => page('/'))
       .catch(errorCallback);
+
+  // Book.delete = id =>
+  //   $.ajax({
+  //     url: `${__API_URL__}/api/v1/books/${id}`,
+  //     method: 'DELETE',
+  //   })
+  //     .then(() => page('/'))
+  //     .catch(errorCallback);
 
   module.Book = Book;
 })(app);

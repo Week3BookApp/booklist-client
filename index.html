@@ -13,15 +13,13 @@
 
     <!-- tempalte for the book list -->
     <script id="bookTemplate" type="text/x-handlebars-template">
-      <li class="bookIndexLi" data-bookId={{id}}>
+      <li class="bookIndexLi" data-bookId={{book_id}}>
         <section>
           <img src="{{image_url}}">
           <div class="bookBanner">
             <h3>{{title}}</h3>
             <p>{{author}}</p>
-            <button> <a href="/detailView/{{id}}"> View Details </a></button>
-            <button> <a href="/updateView/{{id}}">Update Book </a></button>
-            <button> <a href="/delete/{{id}}">Delete Book</a></button>
+            <button> <a href="/detailView/{{book_id}}"> View Details </a></button>
           </div>
         </section>
       </li>
@@ -41,6 +39,8 @@
         <p>{{isbn}}</p>
         <img src={{image_url}}>
         <p>{{description}}</p>
+        <button id="updateBook" data_id="{{book_id}}"><a href="/updateView/{{book_id}}">Update Book </a></button>
+        <button id="deleteBook" data_id="{{book_id}}"> <a href="/delete/{{book_id}}">Delete Book</a></button>
       </section>
     </script>
     <!-- template for book update -->
@@ -48,11 +48,12 @@
       <section class="updateView container">
         <form class="updateBookForm">
           <label>Update a Book</label>
-          <input id="updateTitle" name="title" type="text" value="{{title}}">
-          <input id="updateAuthor" name="author" type="text" value="{{author}}">
-          <input id="updateIsbn" name="isbn" type="text" value="{{isbn}}">
-          <input id="UpdateImg" name="image_url" type="text" value="{{image_url}}">
-          <textarea id="updateDescription" name="description" value="{{description}}" ></textarea>
+          <input id="updateId" name="book_id" text="{{book_id}}" display="none">
+          <input id="updateTitle" name="title" type="text" placeholder="{{title}}">
+          <input id="updateAuthor" name="author" type="text" placeholder="{{author}}">
+          <input id="updateIsbn" name="isbn" type="text" placeholder="{{isbn}}">
+          <input id="UpdateImg" name="image_url" type="text" placeholder="{{image_url}}">
+          <textarea id="updateDescription" name="description" placeholder="{{description}}" ></textarea>
           <button>Submit</button>
         </form>
       </section>

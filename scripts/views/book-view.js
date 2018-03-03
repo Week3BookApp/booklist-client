@@ -5,14 +5,14 @@ var app = app || {};
   const bookView = {};
 
   bookView.reset = () => {
-    $('.container').empty(); // Clear the contents of the container
-    $('.container').hide(); // hide anything with the container tag. Allows for easy view swapping
+    $('.container').empty();
+    $('.container').hide();
     $('.containerHeader').hide();
   };
   bookView.initIndexPage = function() {
     bookView.reset();
     $('.bookView').show();
-    module.Book.all.map(book => $('#bookListUl').append(book.toHtml())); //for each book in the Book.all array make a new template li
+    module.Book.all.map(book => $('#bookListUl').append(book.toHtml())); 
   };
 
   bookView.initDetailView = function(ctx) {
@@ -20,6 +20,10 @@ var app = app || {};
     $('.detailView').show();
     let template = Handlebars.compile($('#detailTemplate').text());
     $('.detailView').append(template(ctx));
+
+    $('#deleteBook').on('click', function() {
+      module.Book.delete($(this).data('book_id'));
+    });
   };
 
   bookView.initFormView = function() {
@@ -38,23 +42,22 @@ var app = app || {};
       module.Book.newBook(newBook);
     });
   };
-  bookView.initUpdateView = function(ctx) { //added in lab 13 for update
+  bookView.initUpdateView = function(ctx) {
     $('.container').hide();
     $('.updateView').show();
     let template = Handlebars.compile($('#updateTemplate').text());
-    $('.updateView').append(template(ctx.book));
-    $('.newBookForm').off('submit');
+    $('.updateView').append(template(ctx));
     $('.updateBookForm').on('submit', function(event) {
       event.preventDefault();
-      let newBook = {
-        id: ctx,
+      let updateBook = {
+        id: event.target.book_id.value,
         title: event.target.title.value,
         author: event.target.author.value,
         isbn: event.target.isbn.value,
         image_url: event.target.image_url.value,
         description: event.target.description.value,
       };
-      module.Book.update(newBook);
+      module.Book.update(updateBook);
     });
   };
 

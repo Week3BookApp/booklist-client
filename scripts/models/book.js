@@ -49,7 +49,7 @@ const __API_URL__ = 'http://localhost:3000';
 
   Book.destroy = (ctx, callback) => // added in lab 13 to delete
     $.ajax({
-      url: `${__API_URL__}/api/v1/books/${ctx.params.id}`,
+      url: `${__API_URL__}/api/v1/books/${ctx.id}`,
       method: 'DELETE'
     })
       .then(console.log)

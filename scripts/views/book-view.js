@@ -41,13 +41,14 @@ var app = app || {};
   bookView.initUpdateView = function(ctx) { //added in lab 13 for update
     $('.container').hide();
     $('.updateView').show();
+    console.log(ctx);
     let template = Handlebars.compile($('#updateTemplate').text());
     $('.updateView').append(template(ctx.book));
     $('.newBookForm').off('submit');
     $('.updateBookForm').on('submit', function(event) {
       event.preventDefault();
       let newBook = {
-        id: ctx,
+        id: ctx.id,
         title: event.target.title.value,
         author: event.target.author.value,
         isbn: event.target.isbn.value,

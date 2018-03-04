@@ -8,17 +8,40 @@
 }
 
 .bookView {
+  height: 90%;
   padding: 10px;
 }
 
 .bookContainer {
   width: 100%;
   height: 200px;
-  background-color: rgba(151, 150, 150, 0.849);
+  background-color: rgb(66, 23, 23);
   display: block;
 }
 
 .bookBanner {
   height: 50px;
-  background-color: rgb(71, 71, 71);
+  background-color: rgb(66, 23, 23);
+}
+
+.updateView ul {
+  display: block;
+}
+
+li.bookIndexLi {
+  height: 240px;
+  display: block;
+}
+.allBooks {
+  height: 240px;
+}
+
+.bookCoverAll {
+  float: left;
+  height: 200px;
+  margin-right: 20px;
+}
+
+.bookBanner {
+  display:inline;
 }

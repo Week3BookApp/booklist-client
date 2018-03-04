@@ -14,12 +14,11 @@
     <!-- tempalte for the book list -->
     <script id="bookTemplate" type="text/x-handlebars-template">
       <li class="bookIndexLi" data-bookId={{book_id}}>
-        <section>
-          <img src="{{image_url}}">
+        <section class="allBooks">
+          <img class="bookCoverAll" src="{{image_url}}">
           <div class="bookBanner">
-            <h3>{{title}}</h3>
-            <p>{{author}}</p>
-            <button> <a href="/detailView/{{book_id}}"> View Details </a></button>
+            <p class="infoAll">{{title}}</br></br>{{author}}</p>
+            <button class="detailButton"> <a href="/detailView/{{book_id}}" class="detailLink"> View Details </a></button>
           </div>
         </section>
       </li>
@@ -46,14 +45,21 @@
     <!-- template for book update -->
     <script id="updateTemplate" type="text/x-handlebars-template">
       <section class="updateView container">
+        <ul class="currentValues">
+          <li id="currentTitle">Title: {{title}}</li>
+          <li id="currentAuthor">Author: {{author}}</li>
+          <li id="currentIsbn">ISBN: {{isbn}}</li>
+          <li id="currentImage_url">Image URL: {{image_url}}</li>
+          <li id="currentDescription">Description: {{description}}</li>
+        </ul>
         <form class="updateBookForm">
           <label>Update a Book</label>
-          <input id="updateId" name="book_id" text="{{book_id}}" display="none">
-          <input id="updateTitle" name="title" type="text" placeholder="{{title}}">
-          <input id="updateAuthor" name="author" type="text" placeholder="{{author}}">
-          <input id="updateIsbn" name="isbn" type="text" placeholder="{{isbn}}">
-          <input id="UpdateImg" name="image_url" type="text" placeholder="{{image_url}}">
-          <textarea id="updateDescription" name="description" placeholder="{{description}}" ></textarea>
+          <input id="updateId" name="book_id">
+          <input id="updateTitle" name="title" type="text" placeholder="title">
+          <input id="updateAuthor" name="author" type="text" placeholder="author">
+          <input id="updateIsbn" name="isbn" type="text" placeholder="isbn">
+          <input id="UpdateImg" name="image_url" type="text" placeholder="image_url">
+          <textarea id="updateDescription" name="description" placeholder="description" ></textarea>
           <button>Submit</button>
         </form>
       </section>
@@ -64,23 +70,23 @@
       <section>
         <div id="logo"><img src="img/033-books.png" alt="Books app logo" class="float-left"></div>
         <h1>Book App</h1>
-      </section>
-      <nav id="navMenu">
-        <div id="burgerMenu"></div>
-        <div id="dropdownContainer">
-          <ul id="navUl">
+        <nav>
+          <div class="hamburgerMenu">
+            <p id="burger"><img src="img/190-menu.png" alt=""></p>
+          </div>
+          <ul class="navMenu">
             <li><a href="/">My Books</a></li>
             <li><a href="/formView">New Book</a></li>
           </ul>
-        </div>
-      </nav>
+        </nav>
+      </section>
     </header>
     <main class="bookMain">
       <!-- errorView -->
       <section class="errorView container"></section>
       <!-- indexVIew -->
       <section class="bookView containerHeader">
-        <h1><u>My Books</u></h1>
+        <h1 id="title"><u>My Books</u></h1>
         <ul class="container bookView" id="bookListUl"></ul>
       </section>
       <!-- detailView -->

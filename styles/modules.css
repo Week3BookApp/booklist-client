@@ -1,3 +1,50 @@
+nav {
+    height: 50px;
+    width: 34px;
+    position: absolute;
+    margin: -13px 20px 5px 429px;
+}
+
+.hamburgerManu{
+    width: 20%;
+    font-family: Arial, Helvetica, sans-serif; 
+   }
+
+  #burger{
+    height: 10px;
+    margin: -20px 0px;
+   }
+
+  .navMenu {
+    width: 20px;
+    margin: 40px -7px;
+    list-style: none;
+    text-align: center;
+    display: none;
+   }
+
+  .navMenu li{
+    display: block;
+    font-size: 15px;
+    padding: 5px;
+    width: 100%;
+    background: rgb(235, 158, 104);
+    border-bottom: 1px solid black;
+   }
+
+  .navMenu li:last-child{
+    border-bottom: none;
+   }
+   
+  .mainNavDropDown li:hover{
+    background: black;
+    color: seashell
+   }
+
+   #title {
+       color: white;
+   }
+
 li {
     display: inline;
   }
@@ -17,11 +64,53 @@ li {
   }
 
   .bookView h1 {
-      width: 100%;
-      height: 40px;
-      padding: 15px 0px;
+      width: 20%;
+      height: 20px;
       text-align: left;
       display: block;
   }
 
-  
+  .infoAll {
+      color: rgb(223, 126, 142);
+      height: 50px;
+      padding: 20px 10px;
+  }
+
+  .detailButton {
+      background-color: rgba(206, 53, 53, 0.801);
+      height: 25px;
+      width: 100px;
+  }
+  .detailLink {
+      color: rgb(243, 148, 164);
+  }
+  .currentValues {
+      padding: 2px;      
+  }
+
+  .currentValues li {
+      display: block;
+  }
+
+  .updateBookForm {
+      display: block;
+  }
+
+ #updateId {
+     display: none;
+ }
+ #updateAuthor {
+     display: block;
+ }
+ #updateTitle {
+    display: block;
+}
+#updateIsbn {
+    display: block;
+}
+#updateImageUrl {
+    display: block;
+}
+#updateDescription {
+    display: block;
+}

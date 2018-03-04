@@ -4,6 +4,10 @@ var app = app || {};
 (module => {
   const bookView = {};
 
+  $('#burger').on('click', function(){
+    $('.navMenu').slideToggle(500);
+  });
+
   bookView.reset = () => {
     $('.container').empty();
     $('.container').hide();

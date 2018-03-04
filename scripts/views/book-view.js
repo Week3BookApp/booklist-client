@@ -54,14 +54,15 @@ var app = app || {};
     $('.updateBookForm').on('submit', function(event) {
       event.preventDefault();
       let updateBook = {
-        id: event.target.book_id.value,
+        id: ctx.book_id,
         title: event.target.title.value,
         author: event.target.author.value,
         isbn: event.target.isbn.value,
         image_url: event.target.image_url.value,
         description: event.target.description.value,
       };
-      module.Book.update(updateBook);
+      console.log(updateBook);
+      module.Book.update(updateBook, updateBook.id);
     });
   };
 
